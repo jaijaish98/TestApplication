@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: phishing-email-detector
+    env: python
+    buildCommand: "pip install -r requirements.txt && python model_trainer.py"
+    startCommand: "gunicorn app:app"
+    plan: free
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.0
+      - key: FLASK_ENV
+        value: production
